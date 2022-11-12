@@ -2,13 +2,15 @@
 
 'Swift Charts' presented at WWDC 2022 do not support pie charts. So try this one!
 
+<img width="767" alt="Examples" src="https://user-images.githubusercontent.com/114917347/201458354-208bd527-135b-4cc9-a842-9dac2941c943.png">
+
 ## Installation
 
 ### Swift Package Manager
 
 1. File -> Add Packages... -> Search or Enter Package URL
 ```
-https://github.com/ashleymills/Reachability.swift
+https://github.com/oshio07/SwiftUI-PieChart.git
 ```
 
 2. Select `Up to Next Major Version` for Dependency Rule
@@ -17,7 +19,7 @@ https://github.com/ashleymills/Reachability.swift
 
 1. Add the following to your `Package.swift` files `dependencies` array.
 ```
-.package(url: "https://github.com/tristanhimmelman/ObjectMapper.git", .upToNextMajor(from: "0.1.0"))
+.package(url: "https://github.com/oshio07/SwiftUI-PieChart.git", .upToNextMajor(from: "0.1.0"))
 ```
 
 ## Usage
