@@ -2,6 +2,8 @@
 
 'Swift Charts' presented at WWDC 2022 do not support pie charts. So try this one!
 
+<img width="767" alt="Examples" src="https://user-images.githubusercontent.com/114917347/201458354-208bd527-135b-4cc9-a842-9dac2941c943.png">
+
 ## Installation
 
 ### Swift Package Manager
