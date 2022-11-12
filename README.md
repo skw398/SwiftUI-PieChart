@@ -10,7 +10,7 @@
 
 1. File -> Add Packages... -> Search or Enter Package URL
 ```
-https://github.com/ashleymills/Reachability.swift
+https://github.com/oshio07/SwiftUI-PieChart.git
 ```
 
 2. Select `Up to Next Major Version` for Dependency Rule
@@ -19,7 +19,7 @@ https://github.com/ashleymills/Reachability.swift
 
 1. Add the following to your `Package.swift` files `dependencies` array.
 ```
-.package(url: "https://github.com/tristanhimmelman/ObjectMapper.git", .upToNextMajor(from: "0.1.0"))
+.package(url: "https://github.com/oshio07/SwiftUI-PieChart.git", .upToNextMajor(from: "0.1.0"))
 ```
 
 ## Usage
