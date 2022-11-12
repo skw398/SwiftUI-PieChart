@@ -146,12 +146,12 @@ public extension PieChart {
 
     init<
         Datum,
-        BinaryFloating: BinaryFloatingPoint
+        FloatingPoint: BinaryFloatingPoint
     >(
         _ data: [Datum],
         backgroundColor: Color = .init(UIColor.systemBackground),
         config: Config = .init(),
-        content: (Datum) -> Item<BinaryFloating>
+        content: (Datum) -> Item<FloatingPoint>
     ) {
         values = []; colors = []
         data.forEach {
