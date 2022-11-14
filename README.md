@@ -23,7 +23,7 @@ https://github.com/oshio07/SwiftUI-PieChart.git
 
 1. Add the following to your `Package.swift` files `dependencies` array.
 ```
-.package(url: "https://github.com/oshio07/SwiftUI-PieChart.git", .upToNextMajor(from: "0.1.0"))
+.package(url: "https://github.com/oshio07/SwiftUI-PieChart.git", .upToNextMajor(from: "0.2.0"))
 ```
 
 ## Usage
