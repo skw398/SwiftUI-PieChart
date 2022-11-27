@@ -32,13 +32,7 @@ public struct PieChart: View {
                 }
                 return angels
             }()
-            let shorterSideLength: CGFloat = {
-                if geometry.size.height > geometry.size.width {
-                    return geometry.size.width
-                } else {
-                    return geometry.size.height
-                }
-            }()
+            let shorterSideLength: CGFloat = min(geometry.size.width, geometry.size.height)
             let center: CGPoint = .init(x: geometry.size.width / 2, y: geometry.size.height / 2)
             let lineWidth: CGFloat = shorterSideLength * pieSizeRatio * lineWidthMultiplier
             let radius: CGFloat = shorterSideLength * pieSizeRatio / 2 + lineWidth / 2
