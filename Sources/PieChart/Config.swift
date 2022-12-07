@@ -17,16 +17,8 @@ public struct Config {
         hole: Double = 0,
         pieSizeRatio: Double = 0.8
     ) {
-        self.pieSizeRatio = convertTo0to1Value(pieSizeRatio)
-        self.lineWidthMultiplier = convertTo0to1Value(space) / 10
-        self.holeSizeRatio = convertTo0to1Value(hole)
-        
-        func convertTo0to1Value(_ value: Double) -> Double {
-            switch value {
-            case ..<0: return 0
-            case 1...: return 1
-            default: return value
-            }
-        }
+        self.pieSizeRatio = min(max(pieSizeRatio, 0), 1)
+        self.lineWidthMultiplier = min(max(space, 0), 1) / 10
+        self.holeSizeRatio = min(max(hole, 0), 1)
     }
 }

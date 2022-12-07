@@ -22,16 +22,10 @@ public struct PieChart: View {
 
     public var body: some View {
         GeometryReader { geometry in
-            let angles: [CGFloat] = {
-                let totalValue = values.reduce(0, +)
-                var angle = -90.0
-                var angels: [CGFloat] = [angle]
-                values.forEach {
-                    angle += Double($0 / totalValue * 360)
-                    angels += [angle]
-                }
-                return angels
-            }()
+            let totalValue = values.reduce(0, +)
+            let angles = values.reduce(into: [-90.0]) { (angles, value) in
+                angles.append(angles.last! + value / totalValue * 360)
+            }
             let shorterSideLength: CGFloat = min(geometry.size.width, geometry.size.height)
             let center: CGPoint = .init(x: geometry.size.width / 2, y: geometry.size.height / 2)
             let lineWidth: CGFloat = shorterSideLength * pieSizeRatio * lineWidthMultiplier
@@ -88,11 +82,7 @@ public extension PieChart {
         config: Config = .init()
     ) {
         self.values = values.map { Double($0) }
-        if colors.isEmpty {
-            self.colors = defaultColors
-        } else {
-            self.colors = colors
-        }
+        self.colors = colors.isEmpty ? defaultColors : colors
         self.pieSizeRatio = config.pieSizeRatio
         self.lineWidthMultiplier = config.lineWidthMultiplier
         self.holeSizeRatio = config.holeSizeRatio
@@ -106,11 +96,7 @@ public extension PieChart {
         config: Config = .init()
     ) {
         self.values = values.map { Double($0) }
-        if colors.isEmpty {
-            self.colors = defaultColors
-        } else {
-            self.colors = colors
-        }
+        self.colors = colors.isEmpty ? defaultColors : colors
         self.pieSizeRatio = config.pieSizeRatio
         self.lineWidthMultiplier = config.lineWidthMultiplier
         self.holeSizeRatio = config.holeSizeRatio
