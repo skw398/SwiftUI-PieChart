@@ -17,7 +17,7 @@ public struct PieChart: View {
     private var colors: [Color] = []
     private var backgroundColor: Color = .init(UIColor.systemBackground)
     // Color.teal is for iOS 15.0+
-    private var teal: Color = .init(red: 48 / 255, green: 176 / 255, blue: 199 / 255)
+    private let teal: Color = .init(red: 48 / 255, green: 176 / 255, blue: 199 / 255)
     private var defaultColors: [Color] { [.blue, .green, .orange, .purple, .red, teal, .yellow] }
 
     public var body: some View {
@@ -36,7 +36,6 @@ public struct PieChart: View {
                 // Slices
                 ForEach ( 0 ..< values.count, id: \.self ) { i in
                     let path = Path { path in
-
                         path.move(to: center)
                         path.addArc(center: center,
                                     radius: radius,
