@@ -23,7 +23,7 @@ https://github.com/oshio07/SwiftUI-PieChart.git
 
 1. Add the following to your `Package.swift` files `dependencies` array.
 ```
-.package(url: "https://github.com/oshio07/SwiftUI-PieChart.git", .upToNextMajor(from: "0.2.0"))
+.package(url: "https://github.com/oshio07/SwiftUI-PieChart.git", .upToNextMajor(from: "0.2.1"))
 ```
 
 ## Usage
@@ -66,9 +66,8 @@ The following numbers are tied to numbers in the image at the top.
         colors: [.red, .orange, .yellow]
     )
 ```
-or    
+or Another instantiation
 ```swift
-    // Another instantiation.
     // All the same parameters can be used.
     PieChart(fruits) { fruit in
         Item(
