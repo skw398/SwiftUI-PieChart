@@ -1,27 +1,23 @@
-//
-//  Item.swift
-//
-//
-//  Created by Shigenari Oshio on 2022/11/10.
-//
-
 import SwiftUI
 
 public struct PieChart: View {
-    private var values: [Double] = []
     
-    private var pieSizeRatio: Double = 0.8
-    private var holeSizeRatio: Double = 0
-    private var lineWidthMultiplier: Double = 0
+    var values: [Double] = []
     
-    private var colors: [Color] = []
-    private var backgroundColor: Color = .init(UIColor.systemBackground)
+    var pieSizeRatio: Double = 0.8
+    var holeSizeRatio: Double = 0
+    var lineWidthMultiplier: Double = 0
+    
+    var colors: [Color] = []
+    var backgroundColor: Color = .init(UIColor.systemBackground)
     // Color.teal is for iOS 15.0+
-    private let teal: Color = .init(red: 48 / 255, green: 176 / 255, blue: 199 / 255)
-    private var defaultColors: [Color] { [.blue, .green, .orange, .purple, .red, teal, .yellow] }
+    let teal: Color = .init(red: 48 / 255, green: 176 / 255, blue: 199 / 255)
+    var defaultColors: [Color] { [.blue, .green, .orange, .purple, .red, teal, .yellow] }
 
     public var body: some View {
+        
         GeometryReader { geometry in
+            
             let totalValue = values.reduce(0, +)
             let angles = values.reduce(into: [-90.0]) { (angles, value) in
                 angles.append(angles.last! + value / totalValue * 360)
@@ -34,7 +30,7 @@ public struct PieChart: View {
             
             ZStack {
                 // Slices
-                ForEach ( 0 ..< values.count, id: \.self ) { i in
+                ForEach (values.indices, id: \.self ) { i in
                     let path = Path { path in
                         path.move(to: center)
                         path.addArc(center: center,
@@ -46,8 +42,7 @@ public struct PieChart: View {
                     }
                     path
                         .fill(colors[i % colors.count])
-                        .overlay(path.stroke(backgroundColor,
-                                             lineWidth: lineWidth))
+                        .overlay(path.stroke(backgroundColor, lineWidth: lineWidth))
                 }
                 
                 // Hole
@@ -66,72 +61,5 @@ public struct PieChart: View {
             .clipped()
         }
         .frame(idealHeight: UIScreen.main.bounds.width)
-    }
-}
-
-public extension PieChart {
-    
-    init(
-        values: [some BinaryInteger],
-        colors: [Color] = [],
-        backgroundColor: Color = .init(UIColor.systemBackground),
-        config: Config = .init()
-    ) {
-        self.values = values.map { Double($0) }
-        self.colors = colors.isEmpty ? defaultColors : colors
-        self.pieSizeRatio = config.pieSizeRatio
-        self.lineWidthMultiplier = config.lineWidthMultiplier
-        self.holeSizeRatio = config.holeSizeRatio
-        self.backgroundColor = backgroundColor
-    }
-
-    init(
-        values: [some BinaryFloatingPoint],
-        colors: [Color] = [],
-        backgroundColor: Color = .init(UIColor.systemBackground),
-        config: Config = .init()
-    ) {
-        self.values = values.map { Double($0) }
-        self.colors = colors.isEmpty ? defaultColors : colors
-        self.pieSizeRatio = config.pieSizeRatio
-        self.lineWidthMultiplier = config.lineWidthMultiplier
-        self.holeSizeRatio = config.holeSizeRatio
-        self.backgroundColor = backgroundColor
-    }
-
-    init<Datum>(
-        _ data: [Datum],
-        backgroundColor: Color = .init(UIColor.systemBackground),
-        config: Config = .init(),
-        content: (Datum) -> Item<some BinaryInteger>
-    ) {
-        values = []; colors = []
-        data.forEach {
-            let item = content($0)
-            values += [Double(item.value)]
-            colors += [item.color]
-        }
-        self.pieSizeRatio = config.pieSizeRatio
-        self.lineWidthMultiplier = config.lineWidthMultiplier
-        self.holeSizeRatio = config.holeSizeRatio
-        self.backgroundColor = backgroundColor
-    }
-
-    init<Datum>(
-        _ data: [Datum],
-        backgroundColor: Color = .init(UIColor.systemBackground),
-        config: Config = .init(),
-        content: (Datum) -> Item<some BinaryFloatingPoint>
-    ) {
-        values = []; colors = []
-        data.forEach {
-            let item = content($0)
-            values += [Double(item.value)]
-            colors += [item.color]
-        }
-        self.pieSizeRatio = config.pieSizeRatio
-        self.lineWidthMultiplier = config.lineWidthMultiplier
-        self.holeSizeRatio = config.holeSizeRatio
-        self.backgroundColor = backgroundColor
     }
 }

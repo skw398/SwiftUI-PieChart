@@ -1,16 +1,10 @@
-//
-//  Config.swift
-//  
-//
-//  Created by Shigenari Oshio on 2022/11/10.
-//
-
 import Foundation
 
 public struct Config {
-    var pieSizeRatio: Double!
-    var lineWidthMultiplier: Double!
-    var holeSizeRatio: Double!
+    
+    var pieSizeRatio: Double
+    var lineWidthMultiplier: Double
+    var holeSizeRatio: Double
     
     public init(
         space: Double = 0,

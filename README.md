@@ -1,10 +1,10 @@
 # SwiftUI-PieChart
 
 ![](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen)
-![](https://img.shields.io/badge/Swift-5.4%20%2B-lightgrey)
+![](https://img.shields.io/badge/Swift-5.7%20%2B-lightgrey)
 ![](https://img.shields.io/badge/platforms-iOS%2013.0%2B%20%7C%20iPadOS%2013.0%2B%20%7C%20macOS%2010.15%2B%20%7C%20tvOS%2013.0%2B%20%7C%20watchOS%206.0%2B-lightgrey)
 
-'Swift Charts' presented at WWDC 2022 do not support pie charts. So try this one!
+Easily draw pie charts with SwiftUI.
 
 <img width="767" alt="Examples" src="https://user-images.githubusercontent.com/114917347/201458354-208bd527-135b-4cc9-a842-9dac2941c943.png">
 
