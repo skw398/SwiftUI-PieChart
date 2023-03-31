@@ -69,13 +69,10 @@ public struct PieChart: View {
     }
 }
 
-// Initializers
 public extension PieChart {
-//     // swift 5.7~
-//    init(
-//        values: [some BinaryInteger],
-    init<Integer: BinaryInteger>(
-        values: [Integer],
+    
+    init(
+        values: [some BinaryInteger],
         colors: [Color] = [],
         backgroundColor: Color = .init(UIColor.systemBackground),
         config: Config = .init()
@@ -88,8 +85,8 @@ public extension PieChart {
         self.backgroundColor = backgroundColor
     }
 
-    init<FloatingPoint: BinaryFloatingPoint>(
-        values: [FloatingPoint],
+    init(
+        values: [some BinaryFloatingPoint],
         colors: [Color] = [],
         backgroundColor: Color = .init(UIColor.systemBackground),
         config: Config = .init()
@@ -102,14 +99,11 @@ public extension PieChart {
         self.backgroundColor = backgroundColor
     }
 
-    init<
-        Datum,
-        Integer: BinaryInteger
-    >(
+    init<Datum>(
         _ data: [Datum],
         backgroundColor: Color = .init(UIColor.systemBackground),
         config: Config = .init(),
-        content: (Datum) -> Item<Integer>
+        content: (Datum) -> Item<some BinaryInteger>
     ) {
         values = []; colors = []
         data.forEach {
@@ -123,14 +117,11 @@ public extension PieChart {
         self.backgroundColor = backgroundColor
     }
 
-    init<
-        Datum,
-        FloatingPoint: BinaryFloatingPoint
-    >(
+    init<Datum>(
         _ data: [Datum],
         backgroundColor: Color = .init(UIColor.systemBackground),
         config: Config = .init(),
-        content: (Datum) -> Item<FloatingPoint>
+        content: (Datum) -> Item<some BinaryFloatingPoint>
     ) {
         values = []; colors = []
         data.forEach {
