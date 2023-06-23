@@ -42,7 +42,7 @@ or
     // Another instantiation
     // All the same parameters can be used.
     PieChart(fruits) { fruit in
-        Item(
+        PieChart.Item(
             value: fruit.count,
             color: fruit.color
         )
@@ -55,7 +55,7 @@ or
         fruits,
         backgroundColor: .black
     ) {
-        Item(
+        PieChart.Item(
             value: $0.count,
             color: $0.color
         )
@@ -66,7 +66,7 @@ or
  ```swift
     PieChart(
         values: fruits.map(\.count),
-        config: Config(space: 0.5) // 0~1.0
+        configuration: PieChart.Configuration(space: 0.5) // 0~1.0
     )
 ```
 
@@ -74,7 +74,7 @@ or
  ```swift
     PieChart(
         values: fruits.map(\.count),
-        config: Config(hole: 0.6) // 0~1.0
+        configuration: PieChart.Configuration(hole: 0.6) // 0~1.0
     )
 ```
 
@@ -82,7 +82,7 @@ or
  ```swift
     PieChart(
         values: fruits.map(\.count),
-        config: Config(space: 0.5, hole: 0.6)
+        configuration: PieChart.Configuration(space: 0.5, hole: 0.6)
     )
 ```
 
@@ -91,7 +91,7 @@ or
     PieChart(
         values: [Int](repeating: 1, count: 7),
         backgroundColor: .gray,
-        config: Config(
+        configuration: PieChart.Configuration(
             pieSizeRatio: 1 // 0~1.0 Default 0.8
         )
     )
@@ -104,7 +104,7 @@ or
     PieChart(
         values: [Int](repeating: 1, count: 7),
         backgroundColor: .gray,
-        config: Config(
+        configuration: PieChart.Configuration(
             pieSizeRatio: 0.5
         )
     )
@@ -119,7 +119,7 @@ or
         values: [Int](repeating: 1, count: 7),
         colors: [.red, .orange, .yellow, .green, .cyan, .blue, .purple],
         backgroundColor: .black,
-        config: Config(
+        configuration: PieChart.Configuration(
             space: 0.3, hole: 0.5, pieSizeRatio: 0.7
         )
     )
