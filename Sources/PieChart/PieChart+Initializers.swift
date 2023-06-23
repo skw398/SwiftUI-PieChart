@@ -6,13 +6,13 @@ public extension PieChart {
         values: [some BinaryInteger],
         colors: [Color] = [],
         backgroundColor: Color = .init(UIColor.systemBackground),
-        config: Config = .init()
+        configuration: Configuration = .init()
     ) {
         self.values = values.map { Double($0) }
         self.colors = colors.isEmpty ? defaultColors : colors
-        self.pieSizeRatio = config.pieSizeRatio
-        self.lineWidthMultiplier = config.lineWidthMultiplier
-        self.holeSizeRatio = config.holeSizeRatio
+        self.pieSizeRatio = configuration.pieSizeRatio
+        self.lineWidthMultiplier = configuration.lineWidthMultiplier
+        self.holeSizeRatio = configuration.holeSizeRatio
         self.backgroundColor = backgroundColor
     }
 
@@ -20,20 +20,20 @@ public extension PieChart {
         values: [some BinaryFloatingPoint],
         colors: [Color] = [],
         backgroundColor: Color = .init(UIColor.systemBackground),
-        config: Config = .init()
+        configuration: Configuration = .init()
     ) {
         self.values = values.map { Double($0) }
         self.colors = colors.isEmpty ? defaultColors : colors
-        self.pieSizeRatio = config.pieSizeRatio
-        self.lineWidthMultiplier = config.lineWidthMultiplier
-        self.holeSizeRatio = config.holeSizeRatio
+        self.pieSizeRatio = configuration.pieSizeRatio
+        self.lineWidthMultiplier = configuration.lineWidthMultiplier
+        self.holeSizeRatio = configuration.holeSizeRatio
         self.backgroundColor = backgroundColor
     }
 
     init<Data>(
         _ data: [Data],
         backgroundColor: Color = .init(UIColor.systemBackground),
-        config: Config = .init(),
+        configuration: Configuration = .init(),
         content: (Data) -> Item<some BinaryInteger>
     ) {
         values = []
@@ -43,16 +43,16 @@ public extension PieChart {
             values += [Double(item.value)]
             colors += [item.color]
         }
-        self.pieSizeRatio = config.pieSizeRatio
-        self.lineWidthMultiplier = config.lineWidthMultiplier
-        self.holeSizeRatio = config.holeSizeRatio
+        self.pieSizeRatio = configuration.pieSizeRatio
+        self.lineWidthMultiplier = configuration.lineWidthMultiplier
+        self.holeSizeRatio = configuration.holeSizeRatio
         self.backgroundColor = backgroundColor
     }
 
     init<Data>(
         _ data: [Data],
         backgroundColor: Color = .init(UIColor.systemBackground),
-        config: Config = .init(),
+        configuration: Configuration = .init(),
         content: (Data) -> Item<some BinaryFloatingPoint>
     ) {
         values = []
@@ -62,9 +62,9 @@ public extension PieChart {
             values += [Double(item.value)]
             colors += [item.color]
         }
-        self.pieSizeRatio = config.pieSizeRatio
-        self.lineWidthMultiplier = config.lineWidthMultiplier
-        self.holeSizeRatio = config.holeSizeRatio
+        self.pieSizeRatio = configuration.pieSizeRatio
+        self.lineWidthMultiplier = configuration.lineWidthMultiplier
+        self.holeSizeRatio = configuration.holeSizeRatio
         self.backgroundColor = backgroundColor
     }
 }
